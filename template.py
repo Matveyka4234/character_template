@@ -101,7 +101,7 @@ def main():
     for i in range(card_quantity):
         name = list(input("Введите имя: "))
         race = input("Введите рассу: ")
-        character_class = input("Введите свой класс: ")
+        character_class = input("Введите свой класс(wizard, warrior, hunter, assassin, bard): ")
         skill = random.sample(CLASSES_BASE[name]["skills"][character_class], 3)
         rendered_page = template.render(
             image = f".\images\{character_class}.png",
