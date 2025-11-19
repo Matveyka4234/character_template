@@ -98,24 +98,24 @@ def main():
     template = env.get_template('template.html')
 
     card_quantity = int(input("Введите количество карточек: "))
-    for i in range(card_quantity):
-        name = list(input("Введите имя: "))
-        race = input("Введите рассу: ")
+    for card in range(card_quantity):
+        character_name = input("Введите имя: ")
+        character_race = input("Введите рассу(Человек или Орк): ")
         character_class = input("Введите свой класс(wizard, warrior, hunter, assassin, bard): ")
-        skill = random.sample(CLASSES_BASE[name]["skills"][character_class], 3)
+        skill = random.sample(CLASSES_BASE[character_name]["skills"][character_class], 3)
         rendered_page = template.render(
             image = f".\images\{character_class}.png",
-            name = name[i],
-            race = race[i],
-            character_class = character_class[i],
-            strength = CLASSES_BASE[character_class]["strength"][i],
-            agility = CLASSES_BASE[character_class]["agility"][i],
-            intelligence = CLASSES_BASE[character_class]["intelligence"][i],
-            luck = CLASSES_BASE[character_class]["luck"][i],
-            temper = CLASSES_BASE[character_class]["temper"][i],
-            first_skill = skill[0][i],
-            second_skill = skill[1][i],
-            third_skill = skill[2][i]
+            character_name = character_name[card],
+            race = character_race[card],
+            character_class = character_class[card],
+            strength = CLASSES_BASE[character_class]["strength"][card],
+            agility = CLASSES_BASE[character_class]["agility"][card],
+            intelligence = CLASSES_BASE[character_class]["intelligence"][card],
+            luck = CLASSES_BASE[character_class]["luck"][card],
+            temper = CLASSES_BASE[character_class]["temper"][card],
+            first_skill = skill[0][card],
+            second_skill = skill[1][card],
+            third_skill = skill[2][card]
         )
 
     with open(f'.\characters\index_{character_class}.html', 'w', encoding="utf8") as file:
